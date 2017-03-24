@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+ {% block meta %}{% endblock %}
+<link rel="stylesheet" type="text/css" href="../static/semantic/semantic.min.css"> {% block css %}{% endblock %}
+
+<head>
+    <title>{% block title %}WallE{% endblock %}</title>
+</head>
+
+<body>
+<div class="ui container">
+    <div class="ui three item menu">
+      <a class="item  {% if  data.url_name == 'index' %}active{%else%}{%endif%}" href="{{url_for('index.index')}}">系统</a>
+      <a class="item  {% if  data.url_name == 'kits' %}active{%else%}{%endif%}" href="{{url_for('kits.kits')}}">工具</a>
+      <a class="item">其他</a>
+    </div>
+        {% block body %}{% endblock %}
+</div>
+
+    <script type="text/javascript" src="../static/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/lib/axios.min.js"></script>
+    <script type="text/javascript" src="../static/js/lib/vue.min.js"></script>
+    <script type="text/javascript" src="../static/semantic/.min.js"></script>
+    {% block js %}{% endblock %}
+</body>
+
+</html>
