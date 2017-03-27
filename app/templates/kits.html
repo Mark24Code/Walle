@@ -1,8 +1,40 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="ui vertical pointing menu">
-  <a class="active item">切换Host</a>
-  <a class="item">思索中</a>
-  <a class="item">开发中</a>
+<div id="tools-cont" class="tools-cont ui grid">
+  <div class="four wide column">
+    <div class="ui vertical fluid tabular menu">
+    <router-link class="item" to="/foo">切换Host</router-link>
+    <router-link class="item" to="/bar">开发中</router-link>
+
+    </div>
+  </div>
+  <div class="twelve wide stretched column">
+    <div class="ui segment">
+     <router-view></router-view>
+    </div>
+  </div>
 </div>
 {% endblock %}
+{% block js%}
+<script>
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
+
+const routes = [
+  { path: '/foo', component: Foo },
+  { path: '/bar', component: Bar }
+]
+
+const router = new VueRouter({
+  routes,
+  linkActiveClass:'active'
+})
+
+const app = new Vue({
+  router
+}).$mount('#tools-cont')
+
+</script>
+
+
+{%endblock%}

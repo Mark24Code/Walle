@@ -2,6 +2,6 @@
 __pycache__/
 *.sqlite
 .idea/
-.env3/
+env3/
 *.log
 log/
